@@ -1,0 +1,227 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #121213;
+  color: #ffffff;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  padding-bottom: 2rem;
+}
+
+/* Header */
+.header {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #3a3a3c;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  margin: 0;
+  color: #ffffff;
+}
+
+/* Status messages */
+.error-message {
+  background-color: #ffffff;
+  color: #121213;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.status-message {
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.status-message.won {
+  background-color: #538d4e;
+  color: #ffffff;
+}
+
+.status-message.lost {
+  background-color: #b59f3b;
+  color: #ffffff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Board */
+.board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+.board {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+  width: 350px;
+  height: 420px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+/* Tiles */
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  user-select: none;
+  border: 2px solid transparent;
+  transition: border-color 0.1s;
+}
+
+.tile--empty {
+  border-color: #3a3a3c;
+}
+
+.tile--tbd {
+  border-color: #565758;
+  color: #ffffff;
+}
+
+.tile--correct {
+  background-color: #538d4e;
+  color: #ffffff;
+  border-color: #538d4e;
+}
+
+.tile--present {
+  background-color: #b59f3b;
+  color: #ffffff;
+  border-color: #b59f3b;
+}
+
+.tile--absent {
+  background-color: #3a3a3c;
+  color: #ffffff;
+  border-color: #3a3a3c;
+}
+
+/* Flip animation on reveal */
+.tile--reveal {
+  animation: flip 0.5s ease forwards;
+}
+
+@keyframes flip {
+  0%   { transform: rotateX(0deg); }
+  50%  { transform: rotateX(-90deg); }
+  100% { transform: rotateX(0deg); }
+}
+
+/* Keyboard */
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 500px;
+  padding: 0 0.5rem;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.key {
+  height: 58px;
+  min-width: 43px;
+  padding: 0 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #818384;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.key--wide {
+  min-width: 65px;
+  font-size: 0.75rem;
+}
+
+.key:hover {
+  filter: brightness(1.15);
+}
+
+.key--correct {
+  background-color: #538d4e;
+}
+
+.key--present {
+  background-color: #b59f3b;
+}
+
+.key--absent {
+  background-color: #3a3a3c;
+}
+
+.key--empty {
+  background-color: #818384;
+}
+
+/* New Game button */
+.new-game-btn {
+  padding: 0.75rem 2rem;
+  background-color: #538d4e;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.new-game-btn:hover {
+  background-color: #6aaf5e;
+}
